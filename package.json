@@ -1,6 +1,6 @@
 {
   "name": "vue-giant-tree",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "refined-x [tower1229@foxmail.com]",
   "main": "./dist/vue-giant-tree.common.js",
   "repository": {
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@ztree/ztree_v3": "^3.5.40",
-    "jquery": "^2.2.4"
+    "jquery": "^3.4.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.10.0",

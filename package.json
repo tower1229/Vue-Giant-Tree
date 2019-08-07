@@ -1,15 +1,32 @@
 {
   "name": "vue-giant-tree",
   "version": "0.1.0",
-  "private": true,
+  "author": "refined-x [tower1229@foxmail.com]",
+  "main": "./dist/vue-giant-tree.common.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tower1229/Vue-Giant-Tree.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "vue",
+    "tree",
+    "ztree"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/tower1229/Vue-Giant-Tree/blob/master/README.md",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-bundle": "vue-cli-service build --target lib --dest dist --name vue-giant-tree ./src/components/ztree.vue",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "core-js": "^2.6.5",
-    "vue": "^2.6.10"
+    "@ztree/ztree_v3": "^3.5.40",
+    "jquery": "^2.2.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.10.0",
@@ -18,8 +35,7 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "less": "^3.0.4",
-    "less-loader": "^4.1.0",
+    "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
   }
 }

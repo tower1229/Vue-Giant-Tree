@@ -72,11 +72,11 @@ in template:
 
 ## 事件
 
-完全移植[zTree API](http://www.treejs.cn/v3/api.php)中的`callback`事件，除了：
+完全移植[zTree API](http://www.treejs.cn/v3/api.php)中`callback`支持的事件，除了：
 
-- 不支持所有 `before` 开头的事件。因为这类事件需要根据返回值决定是否阻止后续的`on`事件，Vue组件无法实现返回值的传递，这种判断可以在`on`事件中实现
-- 不支持 `onNodeCreated` 事件。因为这个事件在大数据量下很耗性能，多数情况没有必要，如果需要可以通过 `setting.callback.onNodeCreated` 自行传入
-- 增加了 `onCreated` 事件。每此初始化完成时触发，回调参数接收ztree实例，通过ztree实例可以使用所有实例方法
+- 不支持所有 `before` 开头的事件。这类事件的主要作用是根据返回值决定是否阻止后续的`on`事件，这种判断可以在`on`事件中实现；当然，你也可以通过`setting.callback.beforeXXX`自行配置
+- 不支持 `onNodeCreated` 事件。因为在大数据量下很耗性能，如果需要可以通过 `setting.callback.onNodeCreated` 自行传入
+- 增加 `onCreated` 事件。每此实例初始化完成时触发，回调参数接收ztree实例，通过ztree实例可以使用所有实例方法
 
 |  参数  | 说明  | 
 |  ----  | ----  |
@@ -99,7 +99,9 @@ in template:
 
 ## 扩展
 
-zTree没有提供整个实例更新数据的方法，vue-giant-tree基于Vue的组件通信机制扩展实现了响应式数据，只要`nodes`属性的值发生变化，ztree实例就会随之更新。
+zTree没有提供给整个实例更新数据的方法，vue-giant-tree基于Vue的组件通信机制扩展实现了响应式数据，只要`nodes`属性的值发生变化，ztree实例就会随之更新。
+
+[项目DEMO](https://github.com/tower1229/Vue-Giant-Tree/blob/master/src/App.vue)里演示了vue-giant-tree的响应式数据特性。
 
 ## 演示
 

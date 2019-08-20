@@ -21,6 +21,10 @@
     <div class="toolbar">
       <button class="btn" type="button" @click="update">更新数据</button>
     </div>
+
+    <footer class="foot"><p>© 2019 - 3019  Author
+      <a href="https://refined-x.com/" target="_blank">前端路上</a></p>
+    </footer>
   </div>
 </template>
 
@@ -91,6 +95,7 @@ export default {
 </script>
 
 <style>
+body{margin:0;}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -121,4 +126,17 @@ export default {
   border-radius: 4px;
 }
 
+.foot {
+    background: #333;
+    padding: 24px;
+    overflow: hidden;
+    color: #999;
+    font-size: 14px;
+    text-align: center
+}
+
+.foot a {
+    color: #fff;
+    margin: 0 .5em
+}
 </style>

@@ -119,3 +119,5 @@ npm run serve
 ## License
 
 MIT
+
+Copyright (c) 2019-present, [前端路上](http://refined-x.com)

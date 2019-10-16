@@ -75,6 +75,7 @@ export default {
   data() {
     return {
       showIndex: 0,
+      ztreeObj: null,
       setting: {
         check: {
           enable: true
@@ -84,6 +85,11 @@ export default {
             enable: true,
             pIdKey: "pid"
           }
+        },
+        view: {
+          showIcon: false,
+          addHoverDom: this.addHoverDom,
+          removeHoverDom: this.removeHoverDom,
         }
       }
     };
@@ -94,6 +100,34 @@ export default {
     }
   },
   methods: {
+    addHoverDom(treeid, treeNode) {
+      const item = document.getElementById(`${treeNode.tId}_a`);
+      if(item && !item.querySelector('.tree_extra_btn')){
+        const btn = document.createElement('sapn');
+        btn.id = `${treeid}_${treeNode.id}_btn`;
+        btn.classList.add('tree_extra_btn');
+        btn.innerText = '删除';
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation()
+          this.clickRemove(treeNode)
+        })
+        item.appendChild(btn);
+      }
+
+    },
+    removeHoverDom(treeid, treeNode) {
+      const item = document.getElementById(`${treeNode.tId}_a`);
+      if(item){
+        const btn = item.querySelector('.tree_extra_btn');
+        if(btn){
+          item.removeChild(btn)
+        }
+      }
+    },
+    clickRemove(treeNode) {
+      console.log('remove', treeNode)
+      this.ztreeObj && this.ztreeObj.removeNode(treeNode)
+    },
     onClick: function(evt, treeId, treeNode) {
       // 点击事件
       console.log(evt.type, treeNode);
@@ -103,6 +137,7 @@ export default {
       console.log(evt.type, treeNode);
     },
     handleCreated: function(ztreeObj) {
+      this.ztreeObj = ztreeObj;
       // onCreated 中操作ztreeObj对象展开第一个节点
       ztreeObj.expandNode(ztreeObj.getNodes()[0], true);
     },
@@ -118,6 +153,12 @@ export default {
 html,body{height: 100%;}
 body {
   margin: 0;
+}
+/* 自定义按钮样式 */
+.tree_extra_btn{
+  display: inline-block;
+  padding: 0 3px;
+  color: red;
 }
 
 /* flex栅格 */

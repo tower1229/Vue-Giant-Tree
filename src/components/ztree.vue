@@ -180,15 +180,18 @@ export default {
   line-height: 22px;
   height: 22px;
   margin: 0;
-  padding: 0 3px;
   cursor: pointer;
   transition: none;
   vertical-align: middle;
   color: #555555;
 }
-.ztree >>> .curSelectedNode {
-  color: #000;
+.ztree >>> .node_name{
+  display: inline-block;
+  padding: 0 3px;
   border-radius: 4px;
+}
+.ztree >>> .curSelectedNode .node_name{
+  color: #000;
   background-color: #c9e9f7;
 }
 .ztree >>> .curSelectedNode_Edit {

@@ -90,6 +90,12 @@ export default {
           showIcon: false,
           addHoverDom: this.addHoverDom,
           removeHoverDom: this.removeHoverDom,
+        },
+        edit: {
+          drag: {
+            isCopy: true
+          },
+          enable: true
         }
       }
     };

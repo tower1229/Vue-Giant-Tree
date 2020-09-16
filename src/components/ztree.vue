@@ -4,113 +4,117 @@
 
 <script>
 import * as $ from "jquery";
-if(!window.jQuery){
+if (!window.jQuery) {
   window.jQuery = $;
 }
 
-require("@ztree/ztree_v3/js/jquery.ztree.all"); 
+require("@ztree/ztree_v3/js/jquery.ztree.all");
 
 export default {
   props: {
     setting: {
       type: Object,
       require: false,
-      default: function(){
-        return {}
-      }
+      default: function () {
+        return {};
+      },
     },
     nodes: {
       type: Array,
       require: true,
-      default: function(){
-        return []
-      }
-    }
+      default: function () {
+        return [];
+      },
+    },
   },
-  data(){
+  data() {
     return {
-      ztreeId: 'ztree_'+ parseInt(Math.random() * 1e10),
+      ztreeId: "ztree_" + parseInt(Math.random() * 1e10),
       ztreeObj: null,
       list: [],
       ztreeSetting: {
         view: {
-          showIcon: false         // default to hide icon
+          showIcon: false, // default to hide icon
         },
         callback: {
           onAsyncError: (...arg) => {
-            this.$emit('onAsyncError', ...arg)
+            this.$emit("onAsyncError", ...arg);
           },
           onAsyncSuccess: (...arg) => {
-            this.$emit('onAsyncSuccess', ...arg)
+            this.$emit("onAsyncSuccess", ...arg);
           },
           onCheck: (...arg) => {
-            this.$emit('onCheck', ...arg)
+            this.$emit("onCheck", ...arg);
           },
           onClick: (...arg) => {
-            this.$emit('onClick', ...arg)
+            this.$emit("onClick", ...arg);
           },
           onCollapse: (...arg) => {
-            this.$emit('onCollapse', ...arg)
+            this.$emit("onCollapse", ...arg);
           },
           onDblClick: (...arg) => {
-            this.$emit('onDblClick', ...arg)
+            this.$emit("onDblClick", ...arg);
           },
           onDrag: (...arg) => {
-            this.$emit('onDrag', ...arg)
+            this.$emit("onDrag", ...arg);
           },
           onDragMove: (...arg) => {
-            this.$emit('onDragMove', ...arg)
+            this.$emit("onDragMove", ...arg);
           },
           onDrop: (...arg) => {
-            this.$emit('onDrop', ...arg)
+            this.$emit("onDrop", ...arg);
           },
           onExpand: (...arg) => {
-            this.$emit('onExpand', ...arg)
+            this.$emit("onExpand", ...arg);
           },
           onMouseDown: (...arg) => {
-            this.$emit('onMouseDown', ...arg)
+            this.$emit("onMouseDown", ...arg);
           },
           onMouseUp: (...arg) => {
-            this.$emit('onMouseUp', ...arg)
+            this.$emit("onMouseUp", ...arg);
           },
           onRemove: (...arg) => {
-            this.$emit('onRemove', ...arg)
+            this.$emit("onRemove", ...arg);
           },
           onRename: (...arg) => {
-            this.$emit('onRename', ...arg)
+            this.$emit("onRename", ...arg);
           },
           onRightClick: (...arg) => {
-            this.$emit('onRightClick', ...arg)
-          }
-        }
-      }
-    }
+            this.$emit("onRightClick", ...arg);
+          },
+        },
+      },
+    };
   },
   watch: {
     nodes: {
-      handler: function(nodes){
+      handler: function (nodes) {
         this.list = nodes;
 
         // update tree
-        if(this.ztreeObj){
+        if (this.ztreeObj) {
           this.ztreeObj.destroy();
         }
         this.$nextTick(() => {
-          this.ztreeObj = $.fn.zTree.init($("#"+this.ztreeId), Object.assign({}, this.ztreeSetting, this.setting), this.list);
-          this.$emit('onCreated', this.ztreeObj)
-        })
+          this.ztreeObj = $.fn.zTree.init(
+            $("#" + this.ztreeId),
+            Object.assign({}, this.ztreeSetting, this.setting),
+            this.list
+          );
+          this.$emit("onCreated", this.ztreeObj);
+        });
       },
       deep: true,
-      immediate: true
-    }
-  }
-}
+      immediate: true,
+    },
+  },
+};
 </script>
 
 <style scoped>
 /* beauty ztree! */
 .ztree {
-  text-align:left;
+  text-align: left;
   font-size: 14px;
 }
 .ztree >>> li {
@@ -128,7 +132,7 @@ export default {
   top: 0;
   left: 10px;
   height: 100%;
-  content: '';
+  content: "";
   border-right: 1px dotted #dbdbdb;
 }
 .ztree >>> .roots_docu:before,
@@ -138,13 +142,13 @@ export default {
 .ztree >>> .center_docu:after,
 .ztree >>> .bottom_docu:after {
   position: absolute;
-  content: '';
+  content: "";
   border: 0 dotted #dbdbdb;
 }
 .ztree >>> .roots_docu:before {
   left: 10px;
   height: 50%;
-  top:50%;
+  top: 50%;
   border-left-width: 1px;
 }
 .ztree >>> .roots_docu:after {
@@ -185,12 +189,12 @@ export default {
   vertical-align: middle;
   color: #555555;
 }
-.ztree >>> .node_name{
+.ztree >>> .node_name {
   display: inline-block;
   padding: 0 3px;
   border-radius: 4px;
 }
-.ztree >>> .curSelectedNode .node_name{
+.ztree >>> .curSelectedNode .node_name {
   color: #000;
   background-color: #c9e9f7;
 }
@@ -233,7 +237,7 @@ export default {
   color: #25ae88;
 }
 .ztree >>> .button.remove {
-  color: #CB4042;
+  color: #cb4042;
 }
 .ztree >>> .button.chk {
   position: relative;
@@ -262,12 +266,12 @@ export default {
   left: 4px;
   width: 4px;
   height: 8px;
-  content: '';
+  content: "";
   transition: -webkit-transform 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
   -webkit-transform: rotate(0deg) scale(0);
-          transform: rotate(0deg) scale(0);
+  transform: rotate(0deg) scale(0);
   border-right: 2px solid #fff;
   border-bottom: 2px solid #fff;
 }
@@ -286,7 +290,7 @@ export default {
 .ztree >>> .button.checkbox_true_full_focus:after,
 .ztree >>> .button.checkbox_true_disable:after {
   -webkit-transform: rotate(45deg) scale(1);
-          transform: rotate(45deg) scale(1);
+  transform: rotate(45deg) scale(1);
 }
 .ztree >>> .button.checkbox_true_part:after,
 .ztree >>> .button.checkbox_true_part_focus:after {
@@ -295,7 +299,7 @@ export default {
   width: 10px;
   height: 1px;
   -webkit-transform: rotate(0deg) scale(1);
-          transform: rotate(0deg) scale(1);
+  transform: rotate(0deg) scale(1);
   border-right: 0;
 }
 .ztree >>> .button.radio_true_full,
@@ -312,7 +316,7 @@ export default {
   left: 3px;
   width: 8px;
   -webkit-transform: rotate(0deg) scale(1);
-          transform: rotate(0deg) scale(1);
+  transform: rotate(0deg) scale(1);
   border: 0;
   border-radius: 4px;
   background: #39f;
@@ -339,14 +343,14 @@ export default {
   position: absolute;
   top: 5px;
   left: 5px;
-  content: '';
+  content: "";
   transition: -webkit-transform ease 0.3s;
   transition: transform ease 0.3s;
   transition: transform ease 0.3s, -webkit-transform ease 0.3s;
   -webkit-transform: rotateZ(0deg);
-          transform: rotateZ(0deg);
+  transform: rotateZ(0deg);
   -webkit-transform-origin: 25% 50%;
-          transform-origin: 25% 50%;
+  transform-origin: 25% 50%;
   border: 6px solid;
   border-color: transparent transparent transparent #666;
 }
@@ -356,15 +360,16 @@ export default {
 .ztree >>> .button.bottom_open:before,
 .ztree >>> .button.center_open:before {
   -webkit-transform: rotateZ(90deg);
-          transform: rotateZ(90deg);
+  transform: rotateZ(90deg);
 }
 .ztree >>> .button.ico_loading {
   margin-right: 2px;
-  background: url('data:image/gif;base64,R0lGODlhEAAQAKIGAMLY8YSx5HOm4Mjc88/g9Ofw+v///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAGACwAAAAAEAAQAAADMGi6RbUwGjKIXCAA016PgRBElAVlG/RdLOO0X9nK61W39qvqiwz5Ls/rRqrggsdkAgAh+QQFCgAGACwCAAAABwAFAAADD2hqELAmiFBIYY4MAutdCQAh+QQFCgAGACwGAAAABwAFAAADD1hU1kaDOKMYCGAGEeYFCQAh+QQFCgAGACwKAAIABQAHAAADEFhUZjSkKdZqBQG0IELDQAIAIfkEBQoABgAsCgAGAAUABwAAAxBoVlRKgyjmlAIBqCDCzUoCACH5BAUKAAYALAYACgAHAAUAAAMPaGpFtYYMAgJgLogA610JACH5BAUKAAYALAIACgAHAAUAAAMPCAHWFiI4o1ghZZJB5i0JACH5BAUKAAYALAAABgAFAAcAAAMQCAFmIaEp1motpDQySMNFAgA7') 0 center no-repeat;
+  background: url("data:image/gif;base64,R0lGODlhEAAQAKIGAMLY8YSx5HOm4Mjc88/g9Ofw+v///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAGACwAAAAAEAAQAAADMGi6RbUwGjKIXCAA016PgRBElAVlG/RdLOO0X9nK61W39qvqiwz5Ls/rRqrggsdkAgAh+QQFCgAGACwCAAAABwAFAAADD2hqELAmiFBIYY4MAutdCQAh+QQFCgAGACwGAAAABwAFAAADD1hU1kaDOKMYCGAGEeYFCQAh+QQFCgAGACwKAAIABQAHAAADEFhUZjSkKdZqBQG0IELDQAIAIfkEBQoABgAsCgAGAAUABwAAAxBoVlRKgyjmlAIBqCDCzUoCACH5BAUKAAYALAYACgAHAAUAAAMPaGpFtYYMAgJgLogA610JACH5BAUKAAYALAIACgAHAAUAAAMPCAHWFiI4o1ghZZJB5i0JACH5BAUKAAYALAAABgAFAAcAAAMQCAFmIaEp1motpDQySMNFAgA7")
+    0 center no-repeat;
 }
 .ztree >>> .tmpTargetzTree {
   opacity: 0.8;
-  background-color: #2EA9DF;
+  background-color: #2ea9df;
   filter: alpha(opacity=80);
 }
 .ztree >>> .tmpzTreeMove_arrow {
@@ -373,23 +378,23 @@ export default {
   height: 18px;
   color: #4fcbf0;
 }
-.ztree >>> .ztree.zTreeDragUL {
-  overflow: hidden;
-  position: absolute;
-  width: auto;
-  height: auto;
+</style>
+<style>
+ul.ztree.zTreeDragUL {
   margin: 0;
   padding: 0;
-  opacity: 0.8;
-  border: 1px #176b53 dotted;
-  background-color: #dbdbdb;
-  filter: alpha(opacity=80);
+  position: absolute;
+  overflow: hidden;
+  background-color: #dedede;
+  border: 1px #4fcbf0 dotted;
+  border-radius: 4px;
+  opacity: 0.7;
 }
+
 .zTreeMask {
   position: absolute;
   z-index: 10000;
-  opacity: 0.0;
+  opacity: 0;
   background-color: #cfcfcf;
-  filter: alpha(opacity=0);
 }
 </style>

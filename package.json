@@ -1,6 +1,6 @@
 {
   "name": "vue-giant-tree",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "refined-x [tower1229@foxmail.com]",
   "main": "./dist/vue-giant-tree.common.js",
   "repository": {

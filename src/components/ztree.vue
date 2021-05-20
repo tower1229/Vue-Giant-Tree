@@ -3,8 +3,11 @@
 </template>
 
 <script>
-import * as $ from "jquery";
-if (!window.jQuery) {
+import * as jquery from "jquery";
+let $ = jquery;
+if (window.jQuery) {
+  $ = window.jQuery;
+}else{
   window.jQuery = $;
 }
 

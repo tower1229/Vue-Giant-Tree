@@ -1,8 +1,7 @@
-import Vue from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
 
-Vue.config.productionTip = false
-
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+// 创建应用
+const app = createApp(App);
+// 挂载应用
+app.mount("#app");

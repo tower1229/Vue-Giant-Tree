@@ -49,6 +49,8 @@
 </template>
 
 <script>
+import tree from "./components/ztree.vue";
+
 const bigData = require("@/mock/big-tree.json");
 const simpleData = [
   { id: 1, pid: 0, name: "随意勾选 1", open: true },
@@ -63,14 +65,14 @@ const simpleData = [
   { id: 22, pid: 2, name: "随意勾选 2-2", open: true },
   { id: 221, pid: 22, name: "随意勾选 2-2-1", checked: true },
   { id: 222, pid: 22, name: "随意勾选 2-2-2" },
-  { id: 23, pid: 2, name: "随意勾选 2-3" }
+  { id: 23, pid: 2, name: "随意勾选 2-3" },
 ];
 const dataQueue = [bigData.data, simpleData];
 
 export default {
   name: "app",
   components: {
-    tree: resolve => require(["./components/ztree.vue"], resolve)
+    tree,
   },
   data() {
     return {
@@ -78,84 +80,86 @@ export default {
       ztreeObj: null,
       setting: {
         check: {
-          enable: true
+          enable: true,
         },
         data: {
           simpleData: {
             enable: true,
-            pIdKey: "pid"
-          }
+            pIdKey: "pid",
+          },
         },
         view: {
           showIcon: false,
           addHoverDom: this.addHoverDom,
           removeHoverDom: this.removeHoverDom,
-        }
-      }
+        },
+      },
     };
   },
   computed: {
-    nodes: function() {
+    nodes: function () {
       return dataQueue[this.showIndex];
-    }
+    },
   },
   methods: {
     addHoverDom(treeid, treeNode) {
       const item = document.getElementById(`${treeNode.tId}_a`);
-      if(item && !item.querySelector('.tree_extra_btn')){
-        const btn = document.createElement('sapn');
+      if (item && !item.querySelector(".tree_extra_btn")) {
+        const btn = document.createElement("sapn");
         btn.id = `${treeid}_${treeNode.id}_btn`;
-        btn.classList.add('tree_extra_btn');
-        btn.innerText = '删除';
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation()
-          this.clickRemove(treeNode)
-        })
+        btn.classList.add("tree_extra_btn");
+        btn.innerText = "删除";
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          this.clickRemove(treeNode);
+        });
         item.appendChild(btn);
       }
-
     },
     removeHoverDom(treeid, treeNode) {
       const item = document.getElementById(`${treeNode.tId}_a`);
-      if(item){
-        const btn = item.querySelector('.tree_extra_btn');
-        if(btn){
-          item.removeChild(btn)
+      if (item) {
+        const btn = item.querySelector(".tree_extra_btn");
+        if (btn) {
+          item.removeChild(btn);
         }
       }
     },
     clickRemove(treeNode) {
-      console.log('remove', treeNode)
-      this.ztreeObj && this.ztreeObj.removeNode(treeNode)
+      console.log("remove", treeNode);
+      this.ztreeObj && this.ztreeObj.removeNode(treeNode);
     },
-    onClick: function(evt, treeId, treeNode) {
+    onClick: function (evt, treeId, treeNode) {
       // 点击事件
       console.log(evt.type, treeNode);
     },
-    onCheck: function(evt, treeId, treeNode) {
+    onCheck: function (evt, treeId, treeNode) {
       // 选中事件
       console.log(evt.type, treeNode);
     },
-    handleCreated: function(ztreeObj) {
+    handleCreated: function (ztreeObj) {
       this.ztreeObj = ztreeObj;
       // onCreated 中操作ztreeObj对象展开第一个节点
       ztreeObj.expandNode(ztreeObj.getNodes()[0], true);
     },
-    update: function() {
+    update: function () {
       // 更新示例数据
       this.showIndex = this.showIndex === 0 ? 1 : 0;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
-html,body{height: 100%;}
+html,
+body {
+  height: 100%;
+}
 body {
   margin: 0;
 }
 /* 自定义按钮样式 */
-.tree_extra_btn{
+.tree_extra_btn {
   display: inline-block;
   padding: 0 3px;
   color: red;
@@ -228,7 +232,7 @@ body {
   text-align: center;
   color: #2c3e50;
 }
-.wrap{
+.wrap {
   overflow: hidden;
 }
 .c {
@@ -243,7 +247,7 @@ body {
   height: 170px;
   line-height: 260px;
   overflow: hidden;
-  background:url(./assets/logo.png) center no-repeat;
+  background: url(./assets/logo.png) center no-repeat;
 }
 .toolbar {
   margin: 20px auto;

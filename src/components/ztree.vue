@@ -3,13 +3,7 @@
 </template>
 
 <script>
-import * as jquery from "jquery";
-let $ = jquery;
-if (window.jQuery) {
-  $ = window.jQuery;
-} else {
-  window.jQuery = $;
-}
+import $ from "jquery";
 
 require("@ztree/ztree_v3/js/jquery.ztree.all");
 

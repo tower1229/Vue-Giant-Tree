@@ -26,6 +26,13 @@ ztree 在性能优化方面已经做到了近乎极致，感谢 ztree 作者的�
 npm i vue-giant-tree-3 --save
 ```
 
+**注意：组件依赖 jQuery，务必在页面中提前加载 jQuery**
+
+```
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+```
+
 ## 使用
 
 in script:

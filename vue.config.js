@@ -1,8 +1,12 @@
 module.exports = {
-  outputDir: 'docs',
-  publicPath: process.env.NODE_ENV === 'production' ?
-    '/Vue-Giant-Tree/' : '/',
+  outputDir: "docs",
+  publicPath: process.env.NODE_ENV === "production" ? "/Vue-Giant-Tree/" : "/",
   css: {
-    extract: false
-  }
-}
+    extract: false,
+  },
+  chainWebpack: (config) => {
+    config.set("externals", {
+      jquery: "jQuery",
+    });
+  },
+};

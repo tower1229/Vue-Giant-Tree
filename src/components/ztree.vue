@@ -1,15 +1,9 @@
 <template>
-  <div class="ztree" :id="ztreeId"></div>
+  <div class="ztree vue-giant-tree" :id="ztreeId"></div>
 </template>
 
 <script>
-import * as jquery from "jquery";
-let $ = jquery;
-if (window.jQuery) {
-  $ = window.jQuery;
-}else{
-  window.jQuery = $;
-}
+import $ from "jquery";
 
 require("@ztree/ztree_v3/js/jquery.ztree.all");
 
@@ -114,23 +108,23 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 /* beauty ztree! */
 .ztree {
   text-align: left;
   font-size: 14px;
 }
-.ztree >>> li {
+.vue-giant-tree li {
   list-style-type: none;
   white-space: nowrap;
   outline: none;
 }
-.ztree >>> li ul {
+.vue-giant-tree li ul {
   position: relative;
   padding: 0 0 0 20px;
   margin: 0;
 }
-.ztree >>> .line:before {
+.vue-giant-tree .line:before {
   position: absolute;
   top: 0;
   left: 10px;
@@ -138,51 +132,51 @@ export default {
   content: "";
   border-right: 1px dotted #dbdbdb;
 }
-.ztree >>> .roots_docu:before,
-.ztree >>> .roots_docu:after,
-.ztree >>> .center_docu:before,
-.ztree >>> .bottom_docu:before,
-.ztree >>> .center_docu:after,
-.ztree >>> .bottom_docu:after {
+.vue-giant-tree .roots_docu:before,
+.vue-giant-tree .roots_docu:after,
+.vue-giant-tree .center_docu:before,
+.vue-giant-tree .bottom_docu:before,
+.vue-giant-tree .center_docu:after,
+.vue-giant-tree .bottom_docu:after {
   position: absolute;
   content: "";
   border: 0 dotted #dbdbdb;
 }
-.ztree >>> .roots_docu:before {
+.vue-giant-tree .roots_docu:before {
   left: 10px;
   height: 50%;
   top: 50%;
   border-left-width: 1px;
 }
-.ztree >>> .roots_docu:after {
+.vue-giant-tree .roots_docu:after {
   top: 50%;
   left: 11px;
   width: 50%;
   border-top-width: 1px;
 }
-.ztree >>> .center_docu:before {
+.vue-giant-tree .center_docu:before {
   left: 10px;
   height: 100%;
   border-left-width: 1px;
 }
-.ztree >>> .center_docu:after {
+.vue-giant-tree .center_docu:after {
   top: 50%;
   left: 11px;
   width: 50%;
   border-top-width: 1px;
 }
-.ztree >>> .bottom_docu:before {
+.vue-giant-tree .bottom_docu:before {
   left: 10px;
   height: 50%;
   border-left-width: 1px;
 }
-.ztree >>> .bottom_docu:after {
+.vue-giant-tree .bottom_docu:after {
   top: 50%;
   left: 11px;
   width: 50%;
   border-top-width: 1px;
 }
-.ztree >>> li a {
+.vue-giant-tree li a {
   display: inline-block;
   line-height: 22px;
   height: 22px;
@@ -192,29 +186,29 @@ export default {
   vertical-align: middle;
   color: #555555;
 }
-.ztree >>> .node_name {
+.vue-giant-tree .node_name {
   display: inline-block;
   padding: 0 3px;
   border-radius: 4px;
 }
-.ztree >>> .curSelectedNode .node_name {
+.vue-giant-tree .curSelectedNode .node_name {
   color: #000;
   background-color: #c9e9f7;
 }
-.ztree >>> .curSelectedNode_Edit {
+.vue-giant-tree .curSelectedNode_Edit {
   height: 20px;
   opacity: 0.8;
   color: #000;
   border: 1px #6cc2e8 solid;
   background-color: #9dd6f0;
 }
-.ztree >>> .tmpTargetNode_inner {
+.vue-giant-tree .tmpTargetNode_inner {
   opacity: 0.8;
   color: #fff;
   background-color: #4fcbf0;
   filter: alpha(opacity=80);
 }
-.ztree >>> .rename {
+.vue-giant-tree .rename {
   font-size: 12px;
   line-height: 22px;
   width: 80px;
@@ -225,7 +219,7 @@ export default {
   border: 0;
   background: none;
 }
-.ztree >>> .button {
+.vue-giant-tree .button {
   position: relative;
   display: inline-block;
   line-height: 22px;
@@ -236,13 +230,13 @@ export default {
   vertical-align: middle;
 }
 
-.ztree >>> .button.edit {
+.vue-giant-tree .button.edit {
   color: #25ae88;
 }
-.ztree >>> .button.remove {
+.vue-giant-tree .button.remove {
   color: #cb4042;
 }
-.ztree >>> .button.chk {
+.vue-giant-tree .button.chk {
   position: relative;
   width: 14px;
   height: 14px;
@@ -251,19 +245,19 @@ export default {
   border-radius: 2px;
   background: #fff;
 }
-.ztree >>> .chk.radio_true_full,
-.ztree >>> .chk.radio_false_full,
-.ztree >>> .chk.radio_true_full_focus,
-.ztree >>> .chk.radio_false_full_focus,
-.ztree >>> .chk.radio_false_disable,
-.ztree >>> .chk.radio_true_disable,
-.ztree >>> .chk.radio_true_part,
-.ztree >>> .chk.radio_false_part,
-.ztree >>> .chk.radio_true_part_focus,
-.ztree >>> .chk.radio_false_part_focus {
+.vue-giant-tree .chk.radio_true_full,
+.vue-giant-tree .chk.radio_false_full,
+.vue-giant-tree .chk.radio_true_full_focus,
+.vue-giant-tree .chk.radio_false_full_focus,
+.vue-giant-tree .chk.radio_false_disable,
+.vue-giant-tree .chk.radio_true_disable,
+.vue-giant-tree .chk.radio_true_part,
+.vue-giant-tree .chk.radio_false_part,
+.vue-giant-tree .chk.radio_true_part_focus,
+.vue-giant-tree .chk.radio_false_part_focus {
   border-radius: 8px;
 }
-.ztree >>> .button.chk:after {
+.vue-giant-tree .button.chk:after {
   position: absolute;
   top: 1px;
   left: 4px;
@@ -278,25 +272,25 @@ export default {
   border-right: 2px solid #fff;
   border-bottom: 2px solid #fff;
 }
-.ztree >>> .button.checkbox_false_full_focus {
+.vue-giant-tree .button.checkbox_false_full_focus {
   border-color: #ccc;
 }
-.ztree >>> .button.checkbox_true_full,
-.ztree >>> .button.checkbox_true_full_focus,
-.ztree >>> .button.checkbox_true_part,
-.ztree >>> .button.checkbox_true_part_focus,
-.ztree >>> .button.checkbox_true_disable {
+.vue-giant-tree .button.checkbox_true_full,
+.vue-giant-tree .button.checkbox_true_full_focus,
+.vue-giant-tree .button.checkbox_true_part,
+.vue-giant-tree .button.checkbox_true_part_focus,
+.vue-giant-tree .button.checkbox_true_disable {
   border-color: #39f;
   background-color: #39f;
 }
-.ztree >>> .button.checkbox_true_full:after,
-.ztree >>> .button.checkbox_true_full_focus:after,
-.ztree >>> .button.checkbox_true_disable:after {
+.vue-giant-tree .button.checkbox_true_full:after,
+.vue-giant-tree .button.checkbox_true_full_focus:after,
+.vue-giant-tree .button.checkbox_true_disable:after {
   -webkit-transform: rotate(45deg) scale(1);
   transform: rotate(45deg) scale(1);
 }
-.ztree >>> .button.checkbox_true_part:after,
-.ztree >>> .button.checkbox_true_part_focus:after {
+.vue-giant-tree .button.checkbox_true_part:after,
+.vue-giant-tree .button.checkbox_true_part_focus:after {
   top: 5px;
   left: 2px;
   width: 10px;
@@ -305,16 +299,16 @@ export default {
   transform: rotate(0deg) scale(1);
   border-right: 0;
 }
-.ztree >>> .button.radio_true_full,
-.ztree >>> .chk.radio_true_full_focus,
-.ztree >>> .chk.radio_true_part,
-.ztree >>> .chk.radio_true_part_focus {
+.vue-giant-tree .button.radio_true_full,
+.vue-giant-tree .chk.radio_true_full_focus,
+.vue-giant-tree .chk.radio_true_part,
+.vue-giant-tree .chk.radio_true_part_focus {
   border-color: #39f;
 }
-.ztree >>> .button.radio_true_full:after,
-.ztree >>> .chk.radio_true_full_focus:after,
-.ztree >>> .chk.radio_true_part:after,
-.ztree >>> .chk.radio_true_part_focus:after {
+.vue-giant-tree .button.radio_true_full:after,
+.vue-giant-tree .chk.radio_true_full_focus:after,
+.vue-giant-tree .chk.radio_true_part:after,
+.vue-giant-tree .chk.radio_true_part_focus:after {
   top: 3px;
   left: 3px;
   width: 8px;
@@ -324,25 +318,25 @@ export default {
   border-radius: 4px;
   background: #39f;
 }
-.ztree >>> .button.checkbox_true_disable,
-.ztree >>> .button.checkbox_false_disable,
-.ztree >>> .chk.radio_false_disable,
-.ztree >>> .chk.radio_true_disable {
+.vue-giant-tree .button.checkbox_true_disable,
+.vue-giant-tree .button.checkbox_false_disable,
+.vue-giant-tree .chk.radio_false_disable,
+.vue-giant-tree .chk.radio_true_disable {
   cursor: not-allowed;
 }
-.ztree >>> .button.checkbox_false_disable {
+.vue-giant-tree .button.checkbox_false_disable {
   background-color: #f3f3f3;
 }
-.ztree >>> .button.noline_close:before,
-.ztree >>> .button.noline_open:before,
-.ztree >>> .button.root_open:before,
-.ztree >>> .button.root_close:before,
-.ztree >>> .button.roots_open:before,
-.ztree >>> .button.roots_close:before,
-.ztree >>> .button.bottom_open:before,
-.ztree >>> .button.bottom_close:before,
-.ztree >>> .button.center_open:before,
-.ztree >>> .button.center_close:before {
+.vue-giant-tree .button.noline_close:before,
+.vue-giant-tree .button.noline_open:before,
+.vue-giant-tree .button.root_open:before,
+.vue-giant-tree .button.root_close:before,
+.vue-giant-tree .button.roots_open:before,
+.vue-giant-tree .button.roots_close:before,
+.vue-giant-tree .button.bottom_open:before,
+.vue-giant-tree .button.bottom_close:before,
+.vue-giant-tree .button.center_open:before,
+.vue-giant-tree .button.center_close:before {
   position: absolute;
   top: 5px;
   left: 5px;
@@ -357,25 +351,25 @@ export default {
   border: 6px solid;
   border-color: transparent transparent transparent #666;
 }
-.ztree >>> .button.noline_open:before,
-.ztree >>> .button.root_open:before,
-.ztree >>> .button.roots_open:before,
-.ztree >>> .button.bottom_open:before,
-.ztree >>> .button.center_open:before {
+.vue-giant-tree .button.noline_open:before,
+.vue-giant-tree .button.root_open:before,
+.vue-giant-tree .button.roots_open:before,
+.vue-giant-tree .button.bottom_open:before,
+.vue-giant-tree .button.center_open:before {
   -webkit-transform: rotateZ(90deg);
   transform: rotateZ(90deg);
 }
-.ztree >>> .button.ico_loading {
+.vue-giant-tree .button.ico_loading {
   margin-right: 2px;
   background: url("data:image/gif;base64,R0lGODlhEAAQAKIGAMLY8YSx5HOm4Mjc88/g9Ofw+v///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAGACwAAAAAEAAQAAADMGi6RbUwGjKIXCAA016PgRBElAVlG/RdLOO0X9nK61W39qvqiwz5Ls/rRqrggsdkAgAh+QQFCgAGACwCAAAABwAFAAADD2hqELAmiFBIYY4MAutdCQAh+QQFCgAGACwGAAAABwAFAAADD1hU1kaDOKMYCGAGEeYFCQAh+QQFCgAGACwKAAIABQAHAAADEFhUZjSkKdZqBQG0IELDQAIAIfkEBQoABgAsCgAGAAUABwAAAxBoVlRKgyjmlAIBqCDCzUoCACH5BAUKAAYALAYACgAHAAUAAAMPaGpFtYYMAgJgLogA610JACH5BAUKAAYALAIACgAHAAUAAAMPCAHWFiI4o1ghZZJB5i0JACH5BAUKAAYALAAABgAFAAcAAAMQCAFmIaEp1motpDQySMNFAgA7")
     0 center no-repeat;
 }
-.ztree >>> .tmpTargetzTree {
+.vue-giant-tree .tmpTargetzTree {
   opacity: 0.8;
   background-color: #2ea9df;
   filter: alpha(opacity=80);
 }
-.ztree >>> .tmpzTreeMove_arrow {
+.vue-giant-tree .tmpzTreeMove_arrow {
   position: absolute;
   width: 18px;
   height: 18px;

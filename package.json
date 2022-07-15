@@ -1,6 +1,6 @@
 {
   "name": "vue-giant-tree",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "author": "refined-x [tower1229@foxmail.com]",
   "main": "./dist/vue-giant-tree.common.js",
   "repository": {
@@ -25,15 +25,14 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@ztree/ztree_v3": "^3.5.44",
-    "jquery": "^3.5.1"
+    "@ztree/ztree_v3": "^3.5.44"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.4.6",
     "@vue/cli-plugin-eslint": "^4.4.6",
     "@vue/cli-service": "^4.4.6",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.4.0",
+    "eslint": "^6.4.0",
     "eslint-plugin-vue": "^6.2.2",
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11"
